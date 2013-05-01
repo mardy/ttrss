@@ -114,13 +114,13 @@ Page {
                 Qt.openUrlExternally(link)
             }
         }
-        Button {
-            width: parent.width
-            text: qsTr("Homepage")
-            onClicked: {
-                Qt.openUrlExternally(constant.sourceRepoSite)
-            }
-        }
+//        Button {
+//            width: parent.width
+//            text: qsTr("Homepage")
+//            onClicked: {
+//                Qt.openUrlExternally(constant.sourceRepoSite)
+//            }
+//        }
         Label {
             width: parent.width
             text: qsTr("If you encounter bugs or have feature requests, please visit the Issue Tracker")
