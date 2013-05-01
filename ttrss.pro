@@ -1,4 +1,4 @@
-VERSION = 0.2.1
+VERSION = 0.2.1-n
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # Add more folders to ship with the application, here
