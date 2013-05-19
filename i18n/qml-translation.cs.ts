@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.0">
 <context>
     <name>About</name>
     <message>
         <location filename="../qml/ttrss/About.qml" line="109"/>
         <source>Version: %1</source>
-        <translation>Versión: %1</translation>
+        <translation>Verze: %1</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="110"/>
@@ -14,17 +14,17 @@
     <message>
         <location filename="../qml/ttrss/About.qml" line="111"/>
         <source>Thanks to:</source>
-        <translation>Gracias a:</translation>
+        <translation>Poděkování:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="119"/>
         <source>Homepage</source>
-        <translation>Página web</translation>
+        <translation>Domovská stránka</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="126"/>
         <source>If you encounter bugs or have feature requests, please visit the Issue Tracker</source>
-        <translation>Si observa errores, o tienes alguna sugerencia, por favor visite el Issue Tracker</translation>
+        <translation>Pokud naleznete nějaké chyby, či máte nápad na novou funkci, navštivte prosím náš Issue Tracker</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="130"/>
@@ -34,12 +34,12 @@
     <message>
         <location filename="../qml/ttrss/About.qml" line="166"/>
         <source>License</source>
-        <translation>Licencia</translation>
+        <translation>Licence</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/About.qml" line="172"/>
         <source>Privacy Policy</source>
-        <translation>Declaración de privacidad</translation>
+        <translation>Zásady osobních údajů</translation>
     </message>
 </context>
 <context>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../qml/ttrss/AboutItem.qml" line="16"/>
         <source>About</source>
-        <translation>Sobre</translation>
+        <translation>O programu</translation>
     </message>
 </context>
 <context>
@@ -55,17 +55,17 @@
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="105"/>
         <source>No categories have unread items</source>
-        <translation>No hay categorías para mostrar</translation>
+        <translation>Žádné nepřečtené kategorie</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="105"/>
         <source>No categories to display</source>
-        <translation>No hay categorías para mostrar</translation>
+        <translation>Žádné kategorie</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Categories.qml" line="136"/>
         <source>Tiny Tiny RSS Reader</source>
-        <translation>Tiny Tiny RSS Reader</translation>
+        <translation>Čtečka Tiny Tiny RSS</translation>
     </message>
 </context>
 <context>
@@ -73,52 +73,52 @@
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="51"/>
         <source>Archived articles</source>
-        <translation>Artículos archivados</translation>
+        <translation>Archivované články</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="52"/>
         <source>Starred articles</source>
-        <translation>Artículos favoritos</translation>
+        <translation>Články s hvězdičkou</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="53"/>
         <source>Published articles</source>
-        <translation>Artículos publicados</translation>
+        <translation>Publikované články</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="54"/>
         <source>Fresh articles</source>
-        <translation>Nuevos artículos</translation>
+        <translation>Nové články</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="55"/>
         <source>All articles</source>
-        <translation>Todos los artículos</translation>
+        <translation>Všechny články</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="56"/>
         <source>Recently read</source>
-        <translation>Leído recientemente</translation>
+        <translation>Nedávno přečené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="58"/>
         <source>Labels</source>
-        <translation>Etiquetas</translation>
+        <translation>Štítky</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="59"/>
         <source>Special</source>
-        <translation>Especial</translation>
+        <translation>Speciální</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="60"/>
         <source>All Feeds</source>
-        <translation>Todos</translation>
+        <translation>Všechny kanály</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Constants.qml" line="61"/>
         <source>Uncategorized</source>
-        <translation>Sin categoría</translation>
+        <translation>Bez zařazení</translation>
     </message>
 </context>
 <context>
@@ -126,7 +126,7 @@
     <message>
         <location filename="../qml/ttrss/ErrorDialog.qml" line="44"/>
         <source>OK</source>
-        <translation>Aceptar</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../qml/ttrss/FeedItem.qml" line="221"/>
         <source>Open in Web Browser</source>
-        <translation>Abrir en navegador web</translation>
+        <translation>Otevřít v prohlížeči</translation>
     </message>
 </context>
 <context>
@@ -142,57 +142,57 @@
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="177"/>
         <source>Today</source>
-        <translation>Hoy</translation>
+        <translation>Dnes</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="192"/>
         <source>No items in feed</source>
-        <translation>No hay artículos para mostrar</translation>
+        <translation>Žádné články v tomto kanálu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="192"/>
         <source>No unread items in feed</source>
-        <translation>No hay artículos para mostrar</translation>
+        <translation>Nic nepřečteného v tomto kanálu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="267"/>
         <source>Mark all read</source>
-        <translation>Marcar todos como leídos</translation>
+        <translation>Označit vše jako přečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="291"/>
         <source>Unstar</source>
-        <translation>Desmarcar</translation>
+        <translation>Odznačit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="291"/>
         <source>Star</source>
-        <translation>Marcar</translation>
+        <translation>Označit</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="300"/>
         <source>Unpublish</source>
-        <translation>Despublicar</translation>
+        <translation>Nepublikovat</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="300"/>
         <source>Publish</source>
-        <translation>Publicar</translation>
+        <translation>Publikovat</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="309"/>
         <source>Mark read</source>
-        <translation>Marcar como leído</translation>
+        <translation>Označit jako přečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="309"/>
         <source>Mark Unread</source>
-        <translation>Desmarcar como leído</translation>
+        <translation>Označit jako nepřečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/FeedItems.qml" line="318"/>
         <source>Open in Web Browser</source>
-        <translation>Abrir en navegador web</translation>
+        <translation>Otevřít v prohlížeči</translation>
     </message>
 </context>
 <context>
@@ -200,17 +200,17 @@
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="95"/>
         <source>No feeds in category</source>
-        <translation>No hay feeds para mostrar</translation>
+        <translation>Žádné kanály v této kategorii</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="95"/>
         <source>Category has no unread items</source>
-        <translation>No hay feeds para mostrar</translation>
+        <translation>Tato kategorie nemá žádné nepřečtené kanály</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Feeds.qml" line="188"/>
         <source>Mark all read</source>
-        <translation>Marcar todos como leídos</translation>
+        <translation>Označit vše jako přečtené</translation>
     </message>
 </context>
 <context>
@@ -218,32 +218,32 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="42"/>
         <source>Server:</source>
-        <translation>Servidor:</translation>
+        <translation>Server:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="54"/>
         <source>Username:</source>
-        <translation>Nombre de usuario:</translation>
+        <translation>Uživatelské jméno:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="66"/>
         <source>Password:</source>
-        <translation>Contraseña:</translation>
+        <translation>Heslo:</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="93"/>
         <source>Clear</source>
-        <translation>Borrar</translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="110"/>
         <source>Login</source>
-        <translation>Login</translation>
+        <translation>Přihlásit se</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="145"/>
         <source>No Account Yet?</source>
-        <translation>¿No tiene cuenta todavía?</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -251,57 +251,57 @@
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="29"/>
         <source>Settings</source>
-        <translation>Configuración</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="46"/>
         <source>Theme</source>
-        <translation>Tema</translation>
+        <translation>Téma vzhledu</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>Dark</source>
-        <translation>Oscuro</translation>
+        <translation>Tmavé</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="48"/>
         <source>White</source>
-        <translation>Blanco</translation>
+        <translation>Bílé</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="53"/>
         <source>Order</source>
-        <translation>Orden cronológico</translation>
+        <translation>Seřazení</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Newest First</source>
-        <translation>El más reciente primero</translation>
+        <translation>Nejprve nové</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="55"/>
         <source>Oldest First</source>
-        <translation>Los más antiguos primero</translation>
+        <translation>Nejprve staré</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="60"/>
         <source>Font Size</source>
-        <translation>Tamaño de la fuente</translation>
+        <translation>Velikost písma</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="68"/>
         <source>Automatically Mark Items as Read</source>
-        <translation>Auto marcar artículos como leído</translation>
+        <translation>Automaticky označovat jako přečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="74"/>
         <source>Show Icons</source>
-        <translation>Mostrar  emblemas</translation>
+        <translation>Zobrazit ikony</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/Settings.qml" line="80"/>
         <source>Use All Feeds on Startup</source>
-        <translation>Utilice &apos;Todos&apos; en el inicio</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -309,7 +309,7 @@
     <message>
         <location filename="../qml/ttrss/SettingsItem.qml" line="16"/>
         <source>Settings</source>
-        <translation>Configuración</translation>
+        <translation>Nastavení</translation>
     </message>
 </context>
 <context>
@@ -317,7 +317,7 @@
     <message>
         <location filename="../qml/ttrss/SimplePopup.qml" line="45"/>
         <source>OK</source>
-        <translation>Aceptar</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -325,12 +325,12 @@
     <message>
         <location filename="../qml/ttrss/ToggleShowAllItem.qml" line="21"/>
         <source>Show Unread Only</source>
-        <translation>Mostrar sólo no leído</translation>
+        <translation>Zobrazit pouze nepřečtené</translation>
     </message>
     <message>
         <location filename="../qml/ttrss/ToggleShowAllItem.qml" line="21"/>
         <source>Show All</source>
-        <translation>Mostrar todos</translation>
+        <translation>Zobrazit vše</translation>
     </message>
 </context>
 </TS>

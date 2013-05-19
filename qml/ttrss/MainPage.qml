@@ -141,6 +141,12 @@ Page {
         id: myMenu
         visualParent: pageStack
         MenuLayout {
+            MenuItem {
+                text: qsTr("No Account Yet?")
+                onClicked: {
+                    rootWindow.openFile(Qt.openUrlExternally(constant.registerUrl));
+                }
+            }
             SettingsItem {}
             AboutItem {}
         }
@@ -201,8 +207,15 @@ Page {
             loginErrorDialog.open();
         }
         else {
-            //Now show the categories View
-            rootWindow.openFile('Categories.qml');
+            if (settings.useAllFeedsOnStartup) {
+                var ttrss = rootWindow.getTTRSS();
+                var component = Qt.createComponent("Feeds.qml");
+                if (component.status === Component.Ready)
+                    pageStack.push(component, { categoryId: ttrss.constants['categories']['ALL'], pageTitle: constant.allFeeds });
+            }
+            else
+                //Now show the categories View
+                rootWindow.openFile('Categories.qml');
         }
     }
 
