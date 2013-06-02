@@ -149,6 +149,8 @@ function setHttpAuthInfo(username, password) {
 function networkCall(params, callback) {
     var http = new XMLHttpRequest();
 
+    trace(3, dump(params))
+
     if (state['httpauth']['dobasicauth'])
         http.open("POST", state['url'], true, state['httpauth']['username'], state['httpauth']['password']);
     else
@@ -591,6 +593,95 @@ function catchUp(feedId, callback) {
                     if(!processPendingRequests(callback))
                         if(callback)
                             callback(0); });
+}
+
+/**
+* 0 - OK, Feed already exists
+* 1 - OK, Feed added
+* 2 - Invalid URL
+* 3 - URL content is HTML, no feeds available
+* 4 - URL content is HTML which contains multiple feeds.
+* 5 - Couldn't download the URL content.
+* 6 - Content is an invalid XML.
+*/
+function subscribe(catId, url, callback) {
+    if(responsesPending['subscribe'])
+        return;
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['subscribe'] = true;
+        state['subscribeurl'] = url
+        processPendingRequests(callback)
+        return;
+    }
+
+    if (state['apilevel'] < 5)
+        if(!processPendingRequests(callback))
+            if(callback)
+                callback(0)
+
+    responsesPending['subscribe'] = true
+
+    var params = {
+        'op': 'subscribeToFeed',
+        'sid': state['token'],
+        'category_id': catId,
+        'feed_url': url
+    }
+
+    networkCall(params, function(http) {
+                    trace(3, "response: "+http.responseText)
+                    responsesPending['subscribe'] = false
+
+                    if(http.status === 200)  {
+                        var responseObject = JSON.parse(http.responseText);
+                        if (responseObject.status === 0) {
+                            if(!processPendingRequests(callback))
+                                if(callback)
+                                    callback(responseObject.content.status.code)
+                        }
+                    }
+                    else
+                        if(!processPendingRequests(callback))
+                            if(callback)
+                                callback(-1)
+                })
+}
+
+function unsubscribe(feedId, callback) {
+    if(responsesPending['unsubscribe'])
+        return
+
+    // needs to be logged in
+    if(!state['token']) {
+        requestsPending['unsubscribe'] = true
+        processPendingRequests(callback)
+        return
+    }
+
+    if (state['apilevel'] < 5)
+        if(!processPendingRequests(callback))
+            if(callback)
+                callback(0)
+
+    responsesPending['unsubscribe'] = true
+
+    var params = {
+        'op': 'unsubscribeFeed',
+        'sid': state['token'],
+        'feed_id': feedId
+    }
+
+    networkCall(params, function(http) {
+                    trace(3, "response: "+http.responseText)
+                    if (state['feedcache'][feedId]) {
+                        delete state['feedcache'][feedId]
+                    }
+                    responsesPending['unsubscribe'] = false;
+                    if(!processPendingRequests(callback))
+                        if(callback)
+                            callback(0); })
 }
 
 function updateFeedStar(articleId, starred, callback) {

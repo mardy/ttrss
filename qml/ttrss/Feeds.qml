@@ -68,27 +68,28 @@ Page {
         if(feeds && feeds.length) {
             //First add feed with unread items
             for(var feed = 0; feed < feeds.length; feed++) {
+                if (feeds[feed]) {
+                    var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
+                    if (feeds[feed].id == ttrss.constants['feeds']['archived'])
+                        title = constant.archivedArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['starred'])
+                        title = constant.starredArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['published'])
+                        title = constant.publishedArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
+                        title = constant.freshArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['all'])
+                        title = constant.allArticles
+                    if (feeds[feed].id == ttrss.constants['feeds']['recently'])
+                        title = constant.recentlyArticles
 
-                var title = ttrss.html_entity_decode(feeds[feed].title, 'ENT_QUOTES')
-                if (feeds[feed].id == ttrss.constants['feeds']['archived'])
-                    title = constant.archivedArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['starred'])
-                    title = constant.starredArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['published'])
-                    title = constant.publishedArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['fresh'])
-                    title = constant.freshArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['all'])
-                    title = constant.allArticles
-                if (feeds[feed].id == ttrss.constants['feeds']['recently'])
-                    title = constant.recentlyArticles
-
-                feedsModel.append({
-                                      title:        title,
-                                      unreadcount:  feeds[feed].unread,
-                                      feedId:       feeds[feed].id,
-                                      icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
-                                  });
+                    feedsModel.append({
+                                          title:        title,
+                                          unreadcount:  feeds[feed].unread,
+                                          feedId:       feeds[feed].id,
+                                          icon:         settings.displayIcons ? ttrss.getIconUrl(feeds[feed].id) : ''
+                                      });
+                }
             }
         }
         else {
@@ -167,6 +168,12 @@ Page {
         visualParent: pageStack
 
         MenuLayout {
+            MenuItem {
+                text: qsTr("Add subscription")
+                enabled: feedsPage.categoryId >= 0
+                onClicked: {
+                    addsubsriptionsheet.open()
+                } }
             ToggleShowAllItem {
                 onUpdateView: {
                     feedsPage.updateFeeds()
@@ -174,6 +181,72 @@ Page {
             }
             SettingsItem {}
             AboutItem {}
+        }
+    }
+
+    Sheet {
+        id: addsubsriptionsheet
+
+        acceptButtonText: qsTr("Add")
+        rejectButtonText: qsTr("Cancel")
+
+        content: Flickable {
+            anchors.fill: parent
+            anchors.leftMargin: 10
+            anchors.topMargin: 10
+            flickableDirection: Flickable.VerticalFlick
+            Column {
+                id: col2
+                anchors.top: parent.top
+                spacing: 10
+                width: parent.width
+                Label {
+                    id: serverLabel
+                    text: qsTr("Feed address:")
+                    width: parent.width
+                    font.pixelSize: constant.fontSizeMedium
+                }
+                TextField {
+                    id: server
+                    text: ""
+                    width: parent.width
+                }
+            }
+        }
+        onAccepted: {
+            var ttrss = rootWindow.getTTRSS()
+            loading = true
+            ttrss.subscribe(feedsPage.categoryId, server.text, function(result) {
+                                loading = false
+                                /**
+                                * 0 - OK, Feed already exists
+                                * 1 - OK, Feed added
+                                * 2 - Invalid URL
+                                * 3 - URL content is HTML, no feeds available
+                                * 4 - URL content is HTML which contains multiple feeds.
+                                * 5 - Couldn't download the URL content.
+                                * 6 - Content is an invalid XML.
+                                */
+                                if (result === -1 || result >= 3) {
+                                    infoBanner.text = qsTr('Error')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                }
+                                else if (result === 2) {
+                                    infoBanner.text = qsTr('Invalid URL')
+                                    infoBanner.show()
+                                    addsubsriptionsheet.open()
+                                }
+                                else if (result === 0) {
+                                    infoBanner.text = qsTr('Already suscribed to Feed')
+                                    infoBanner.show()
+                                }
+                                else {
+                                    infoBanner.text = qsTr('Feed added')
+                                    infoBanner.show()
+                                    updateFeeds()
+                                }
+                            })
         }
     }
 
@@ -190,6 +263,14 @@ Page {
                     var ttrss = rootWindow.getTTRSS()
                     loading = true
                     ttrss.catchUp(feedMenu.feedId, showFeedsCallback)
+                } }
+            MenuItem {
+                text: qsTr("Unsubscribe")
+                enabled: feedMenu.feedId >= 0
+                onClicked: {
+                    var ttrss = rootWindow.getTTRSS()
+                    loading = true
+                    ttrss.unsubscribe(feedMenu.feedId, showFeedsCallback)
                 } }
         }
     }

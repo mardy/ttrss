@@ -132,65 +132,70 @@
 <context>
     <name>FeedItem</name>
     <message>
-        <location filename="../qml/ttrss/FeedItem.qml" line="221"/>
+        <location filename="../qml/ttrss/FeedItem.qml" line="228"/>
         <source>Open in Web Browser</source>
         <translation>Otevřít v prohlížeči</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/FeedItem.qml" line="235"/>
+        <source>Share</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedItems</name>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="177"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="180"/>
         <source>Today</source>
         <translation>Dnes</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="192"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="195"/>
         <source>No items in feed</source>
         <translation>Žádné články v tomto kanálu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="192"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="195"/>
         <source>No unread items in feed</source>
         <translation>Nic nepřečteného v tomto kanálu</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="267"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="270"/>
         <source>Mark all read</source>
         <translation>Označit vše jako přečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="291"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
         <source>Unstar</source>
         <translation>Odznačit</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="291"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="294"/>
         <source>Star</source>
         <translation>Označit</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="300"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="303"/>
         <source>Unpublish</source>
         <translation>Nepublikovat</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="300"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="303"/>
         <source>Publish</source>
         <translation>Publikovat</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="309"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="312"/>
         <source>Mark read</source>
         <translation>Označit jako přečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="309"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="312"/>
         <source>Mark Unread</source>
         <translation>Označit jako nepřečtené</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/FeedItems.qml" line="318"/>
+        <location filename="../qml/ttrss/FeedItems.qml" line="321"/>
         <source>Open in Web Browser</source>
         <translation>Otevřít v prohlížeči</translation>
     </message>
@@ -198,19 +203,64 @@
 <context>
     <name>Feeds</name>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="95"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
         <source>No feeds in category</source>
         <translation>Žádné kanály v této kategorii</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="95"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="96"/>
         <source>Category has no unread items</source>
         <translation>Tato kategorie nemá žádné nepřečtené kanály</translation>
     </message>
     <message>
-        <location filename="../qml/ttrss/Feeds.qml" line="188"/>
+        <location filename="../qml/ttrss/Feeds.qml" line="172"/>
+        <source>Add subscription</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="190"/>
+        <source>Add</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="191"/>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="205"/>
+        <source>Feed address:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="231"/>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="236"/>
+        <source>Invalid URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="241"/>
+        <source>Already suscribed to Feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="245"/>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="261"/>
         <source>Mark all read</source>
         <translation>Označit vše jako přečtené</translation>
+    </message>
+    <message>
+        <location filename="../qml/ttrss/Feeds.qml" line="268"/>
+        <source>Unsubscribe</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -243,7 +293,7 @@
     <message>
         <location filename="../qml/ttrss/MainPage.qml" line="145"/>
         <source>No Account Yet?</source>
-        <translation type="unfinished"/>
+        <translation>Ještě nemáte účet?</translation>
     </message>
 </context>
 <context>
