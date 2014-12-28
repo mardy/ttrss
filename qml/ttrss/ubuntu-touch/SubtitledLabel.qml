@@ -18,6 +18,7 @@ Item {
     property alias text: titleLabel.text
     property alias subText: subLabel.text
     property alias iconSource: icon.source
+    property alias iconColor: iconShape.color
     property bool bold: false
 
     anchors.top: parent.top
