@@ -1,0 +1,6 @@
+{
+    "make_jobs": 7,
+    "template": "custom",
+    "build": "qt5-qmake-arm-linux-gnueabihf ../ttrss-ubuntu.pro && make -j7 && make INSTALL_ROOT=./build/tmp install",
+    "default": "kill build click-build install launch"
+}
