@@ -13,7 +13,6 @@ DEFINES += TARGET=\\\"$${APPLICATION_NAME}\\\"
 QT += quick qml
 
 CLICK_DIR = $${INSTALL_PREFIX}
-CLICK_ARCH = $$system("dpkg-architecture -qDEB_HOST_ARCH")
 BUILD_ARCH = $$system("dpkg-architecture -qDEB_BUILD_ARCH")
 
 target.path = $${CLICK_DIR}
