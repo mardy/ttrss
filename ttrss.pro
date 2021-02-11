@@ -1,104 +1,68 @@
-# This file is part of TTRss, a Tiny Tiny RSS Reader App
-# for MeeGo Harmattan and Sailfish OS.
-# Copyright (C) 2012–2015  Hauke Schade
-#
-# TTRss is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# TTRss is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with TTRss; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or see
-# http://www.gnu.org/licenses/.
-
-VERSION = 0.5.2
-
+APPLICATION_NAME = "it.mardy.ttrss"
+VERSION = 0.6.2
+UBUNTU_REVISION = 0
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
-DEFINES += TARGET=\\\"$$TARGET\\\"
 
-# Add more folders to ship with the application, here
-folder_01.source = qml/ttrss/models
-folder_01.target = qml
-folder_02.source = qml/ttrss/harmattan
-folder_02.target = qml
-folder_03.source = qml/ttrss/components
-folder_03.target = qml
-folder_04.source = qml/ttrss/resources
-folder_04.target = qml
-DEPLOYMENTFOLDERS = folder_01 folder_02 folder_03 folder_04
+DEFINES += Q_OS_UBUNTU_TOUCH
 
-# Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH =
+include(common-config.pri)
 
-symbian:TARGET.UID3 = 0xE29C50DC
+TARGET = ttrss-ubuntu-touch
+DEFINES += TARGET=\\\"$${APPLICATION_NAME}\\\"
 
-# Smart Installer package's UID
-# This UID is from the protected range and therefore the package will
-# fail to install if self-signed. By default qmake uses the unprotected
-# range value if unprotected UID is defined for the application and
-# 0x2002CCCF value if protected UID is given to the application
-#symbian:DEPLOYMENT.installer_header = 0x2002CCCF
+QT += quick qml
 
-# Allow network access on Symbian
-symbian:TARGET.CAPABILITY += NetworkServices
+CLICK_DIR = $${INSTALL_PREFIX}
+CLICK_ARCH = $$system("dpkg-architecture -qDEB_HOST_ARCH")
+BUILD_ARCH = $$system("dpkg-architecture -qDEB_BUILD_ARCH")
 
-# If your application uses the Qt Mobility libraries, uncomment the following
-# lines and add the respective components to the MOBILITY variable.
-# CONFIG += mobility
-# MOBILITY +=
+target.path = $${CLICK_DIR}
+INSTALLS += target
 
-# Speed up launching on MeeGo/Harmattan when using applauncherd daemon
-CONFIG += qdeclarative-boostable
+CONFIG += link_pkgconfig
 
-contains(MEEGO_EDITION,harmattan) {
-    # disable to make builds for use with meecolay
-    CONFIG += shareuiinterface-maemo-meegotouch share-ui-plugin share-ui-common
-    DEFINES += Q_OS_HARMATTAN
-    DEFINES += SHAREUI
-}
+OTHER_FILES += \
+    $$files(qml/ttrss/ubuntu-touch/*.qml)
 
-# Add dependency to Symbian components
-# CONFIG += qt-components
+qml_1.files = qml/ttrss/ubuntu-touch
+qml_1.path = $${CLICK_DIR}/qml
+qml_2.files = qml/ttrss/models
+qml_2.path = $${CLICK_DIR}/qml
+qml_3.files = qml/ttrss/resources
+qml_3.path = $${CLICK_DIR}/qml
+INSTALLS += qml_1 qml_2 qml_3
 
-# The .cpp files
-SOURCES += main.cpp \
-    settings.cpp \
-    mynetworkmanager.cpp \
-    qmlutils.cpp \
-    theme.cpp
+resources.files = images/resources
+resources.path = $${CLICK_DIR}/qml
+INSTALLS += resources
 
-# Please do not modify the following two lines. Required for deployment.
-include(qmlapplicationviewer/qmlapplicationviewer.pri)
-qtcAddDeployment()
+icon.files = ubuntu/ttrss_icon_256.png
+icon.path = $${CLICK_DIR}
+INSTALLS += icon
 
-RESOURCES += \
-    images.qrc \
-    i18n.qrc
+QMAKE_SUBSTITUTES += ubuntu/ttrss.desktop.in
+desktop.files = ubuntu/ttrss.desktop
+desktop.path = $${CLICK_DIR}
+INSTALLS += desktop
+
+apparmor.files = ubuntu/ttrss.json
+apparmor.path = $${CLICK_DIR}
+INSTALLS += apparmor
+
+QMAKE_SUBSTITUTES += ubuntu/manifest.json.in
+manifest.files = ubuntu/manifest.json
+manifest.path = $${CLICK_DIR}
+INSTALLS += manifest
 
 HEADERS += \
     settings.hh \
     mynetworkmanager.hh \
-    qmlutils.hh \
-    theme.hh
+    qmlutils.hh
 
-OTHER_FILES += \
-    qtc_packaging/debian_harmattan/rules \
-    qtc_packaging/debian_harmattan/README \
-    qtc_packaging/debian_harmattan/manifest.aegis \
-    qtc_packaging/debian_harmattan/copyright \
-    qtc_packaging/debian_harmattan/control \
-    qtc_packaging/debian_harmattan/compat \
-    qtc_packaging/debian_harmattan/changelog \
-    $$files(qml/ttrss/sailfish/*.qml) \
-    $$files(qml/ttrss/sailfish/pages/*.qml) \
-    $$files(qml/ttrss/sailfish/items/*.qml) \
-    *.desktop
+SOURCES += main.cpp \
+    settings.cpp \
+    mynetworkmanager.cpp \
+    qmlutils.cpp
 
 TS_FILE = $${_PRO_FILE_PWD_}/i18n/$${TARGET}.ts
 
@@ -114,30 +78,34 @@ for(dir, TRANSLATION_SOURCE_CANDIDATES) {
 update_translations.target = update_translations
 update_translations.commands += mkdir -p translations && lupdate $${TRANSLATION_SOURCES} -ts $${TS_FILE}
 QMAKE_EXTRA_TARGETS += update_translations
-PRE_TARGETDEPS += update_translations
 
 build_translations.target = build_translations
 build_translations.commands += lrelease $${_PRO_FILE_}
 QMAKE_EXTRA_TARGETS += build_translations
-POST_TARGETDEPS += build_translations
+
+equals(CLICK_ARCH, $${BUILD_ARCH}) {
+    PRE_TARGETDEPS += update_translations
+    POST_TARGETDEPS += build_translations
+} else {
+    message("Cross compiling: disabling building of translations")
+}
+
+#qm.files = $$replace(TRANSLATIONS, .ts, .qm)
+#qm.path = /usr/share/$${TARGET}/translations
+#qm.CONFIG += no_check_exist
+
+#INSTALLS += qm
 
 TRANSLATIONS += i18n/qml-translation.cs.ts \
     i18n/qml-translation.de.ts \
     i18n/qml-translation.en.ts \
     i18n/qml-translation.es.ts \
     i18n/qml-translation.fr.ts \
-    i18n/qml-translation.nl_NL.ts \
-    i18n/qml-translation.ru.ts \
     i18n/qml-translation.ro.ts \
-    i18n/qml-translation.sv.ts \
+    i18n/qml-translation.ru.ts \
     i18n/qml-translation.zh_CN.ts
 
-contains(MEEGO_EDITION,harmattan) {
-    icon.files = images/ttrss80.png
-    icon.path = /usr/share/icons/hicolor/80x80/apps
-    INSTALLS += icon
-
-    splash.files = images/ttrss-splash-portrait.jpg images/ttrss-splash-landscape.jpg
-    splash.path = /opt/$${TARGET}/splash
-    INSTALLS += splash
-}
+click.target = click
+click.depends = install
+click.commands = "click build click"
+QMAKE_EXTRA_TARGETS += click

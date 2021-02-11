@@ -1,6 +1,6 @@
 {
 	\"description\": \"Tiny Tiny RSS client\",
-	\"framework\": \"ubuntu-sdk-16.04\",
+	\"framework\": \"ubuntu-sdk-16.04.4\",
 	\"hooks\": {
 		\"ttrss\": {
 			\"apparmor\": \"ttrss.json\",
@@ -9,7 +9,7 @@
 	},
 	\"architecture\": \"$${CLICK_ARCH}\",
 	\"maintainer\": \"Alberto Mardegan <info@mardy.it>\",
-	\"name\": \"it.mardy.ttrss\",
+	\"name\": \"$${APPLICATION_NAME}\",
 	\"title\": \"Tiny Tiny RSS\",
 	\"version\": \"$${VERSION}-$${UBUNTU_REVISION}\"
 }
