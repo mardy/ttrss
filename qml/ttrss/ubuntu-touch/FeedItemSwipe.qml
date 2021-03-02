@@ -75,7 +75,7 @@ Page {
     Component.onCompleted: {
         /* We don't use an alias on the current index, in order to perform the
          * autoread action when the index changes. */
-        listView.currentIndex = root.currentIndex
+        listView.positionViewAtIndex(root.currentIndex, ListView.SnapPosition)
     }
 
     Timer {
