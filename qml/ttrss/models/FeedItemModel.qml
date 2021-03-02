@@ -126,6 +126,8 @@ ListModel {
 
                 var modelEntry = {
                     title:      ttrss.html_entity_decode(title, 'ENT_QUOTES'),
+                    author:     feeditems[feeditem].author,
+                    feed_title: feeditems[feeditem].feed_title,
                     content:    feeditems[feeditem].content,
                     subtitle:   ttrss.html_entity_decode(subtitle, 'ENT_QUOTES'),
                     id:         parseInt(feeditems[feeditem].id),

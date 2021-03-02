@@ -23,7 +23,7 @@ Page {
     anchors.fill: parent
 
     header: PageHeader {
-        title: currentItem ? currentItem.title : ""
+        title: currentItem ? (isCat ? currentItem.feedTitle : currentItem.title) : ""
         trailingActionBar.actions: [
             Action {
                 iconSource: "../resources/ic_star_"+(currentItem.marked?"enabled":"disabled")+".png"
@@ -50,6 +50,8 @@ Page {
 
         delegate: FeedItem {
             title: model.title
+            feedTitle: model.feedTitle
+            author: model.author
             url: model.url
             date: model.date
             labels: model.labels

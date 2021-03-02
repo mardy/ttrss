@@ -10,12 +10,15 @@
 //in /usr/share/common-licenses. If not, see http://www.gnu.org/licenses/.
 
 import QtQuick 2.0
+import QtQuick.Layouts 1.3
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
 Item {
     id: root
     property string title:          ""
+    property string feedTitle:      ""
+    property string author:         ""
     property string url:            ""
     property string date:           ""
     property bool   marked:         false
@@ -81,13 +84,18 @@ Item {
                     right: parent.right
                 }
             }
-            Label {
-                text: date
-                fontSize: "small"
-                textFormat: Text.PlainText
-                anchors {
-                    right: parent.right
-                    rightMargin: Theme.paddingLarge
+            RowLayout {
+                anchors { left: parent.left; right: parent.right }
+                Label {
+                    Layout.fillWidth: true
+                    text: author
+                    wrapMode: Text.Wrap
+                }
+                Label {
+                    verticalAlignment: Text.AlignBottom
+                    text: date
+                    fontSize: "small"
+                    textFormat: Text.PlainText
                 }
             }
 
